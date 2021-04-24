@@ -1,0 +1,4 @@
+ALTER SESSION SET "_ORACLE_SCRIPT"=true; 
+CREATE USER ziyaaddin_yaramis IDENTIFIED BY "85276418";
+GRANT CONNECT TO ziyaaddin_yaramis;
+GRANT ALL PRIVILEGES TO ziyaaddin_yaramis; 
