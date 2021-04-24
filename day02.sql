@@ -1,15 +1,18 @@
-
-/*======================================================================================
-    NOT NULL    - Bir Sütunun  NULL içermemesini garanti eder.
-    UNIQUE      - Bir sütundaki tüm de?erlerin BENZERS?Z olmas?n? garanti eder.
-    PRIMARY KEY - Bir sütünün NULL içermemesini ve sütundaki verilerin
+/*======================= CONSTRAINTS - KISITLAMALAR ======================================
+               
+    NOT NULL - Bir Sütunun  NULL içermemesini garanti eder. 
+    UNIQUE - Bir sütundaki tüm de?erlerin BENZERS?Z olmas?n? garanti eder.  
+    PRIMARY KEY - Bir sütünün NULL içermemesini ve sütundaki verilerin 
                   BENZERS?Z olmas?n? garanti eder.(NOT NULL ve UNIQUE birle?imi gibi)
-    FOREIGN KEY - Ba?ka bir tablodaki Primary Key’i referans göstermek için kullan?l?r.
-                  Böylelikle, tablolar aras?nda ili?ki kurulmu? olur.
-    CHECK       - Bir sutundaki tüm verilerin belirlenen özel bir ?art? sa?lamas?n? garanti eder.
-    DEFAULT     - Herhangi bir de?er atanamad???nda Ba?lang?ç de?erinin atanmas?n? sa?lar.
+    FOREIGN KEY - Ba?ka bir tablodaki Primary Key’i referans göstermek için kullan?l?r. 
+                  Böylelikle, tablolar aras?nda ili?ki kurulmu? olur. 
+    CHECK - Bir sutundaki tüm verilerin belirlenen özel bir ?art? sa?lamas?n? garanti eder. 
+    DEFAULT - Herhangi bir de?er atanamad???nda Ba?lang?ç de?erinin atanmas?n? sa?lar.
  ========================================================================================*/
-
+   
+----------------------------------------------------------------
+-- KISITLAMALAR (ORNEK1 - PRIMARY KEY)
+----------------------------------------------------------------
 
  CREATE TABLE calisanlar
     (
@@ -31,6 +34,7 @@
     
     DROP TABLE calisanlar;   
     
+    -- 10001 id'li calisani silme (?leride bu konuyu görece?iz).
     DELETE calisanlar
     WHERE id = '10001';
     /*
@@ -42,8 +46,11 @@
     
     
     
------------------------------------------------------------------
-/* alternatif primary tan?mlama yöntemi*/
+----------------------------------------------------------------
+-- KISITLAMALAR (ORNEK2 - PRIMARY KEY ALTERNAT?F YÖNTEM)
+----------------------------------------------------------------
+-- Bu yöntemde K?s?tlamaya istedi?imiz ismi atayabiliriz 
+-- ve DISABLE komutuyla istedi?imizde pasif hale getirebiliriz. 
 
 CREATE TABLE calisanlar
     (
@@ -51,7 +58,7 @@ CREATE TABLE calisanlar
         isim VARCHAR2(50)UNIQUE,
         maas NUMBER(5) NOT NULL,
         ise_baslama DATE,
-        CONSTRAINT  id_pk PRIMARY KEY(id)
+        CONSTRAINT  id_pk PRIMARY KEY(id) --DISABLE
         
         /*
         CONSTRAINT komudu ile olusturulan id 'i PRIMARY KEY yaptik 
@@ -64,6 +71,10 @@ CREATE TABLE calisanlar
     INSERT INTO calisanlar VALUES('10003', 'Cuneyt Ozkan', 5000, '14-04-2018');
     
     DROP TABLE calisanlar;
+    
+    ----------------------------------------------------------------
+-- KISITLAMALAR (ORNEK3 - FOREIGN KEY)
+----------------------------------------------------------------
     
     CREATE TABLE adresler(
     
@@ -84,6 +95,7 @@ CREATE TABLE calisanlar
     INSERT INTO adresler VALUES('10001','Mutlu Sok', '40.Cad.','IST');
     INSERT INTO adresler VALUES('10001','Can Sok', '50.Cad.','Ankara');
     INSERT INTO adresler VALUES('10002','Aga Sok', '30.Cad.','Antep');
+    -- FK'ye null de?eri atanabilir.
     INSERT INTO adresler VALUES('','Aga Sok', '30.Cad.','Antep');
     INSERT INTO adresler VALUES('','Aga Sok', '30.Cad.','Antep');
     
@@ -101,9 +113,16 @@ CREATE TABLE calisanlar
     tablolari Query Result ta toplu olarak görebiliriz
     */
     
+    
+    -- Child tablo silinmeden parent tablo silinemez.
     DROP TABLE calisanlar;
     DROP TABLE adresler;
     
+    
+    
+    -- FK ile birle?tirilen tablolardaki tüm verileri çekmek için 
+    -- JOIN ??lemi yapmak gerekir. Bu konuyu sonra görece?iz.
+    SELECT * FROM calisanlar, adresler WHERE calisanlar.id = adresler.adres_id;
     
     
     --DERS NOTLARI
