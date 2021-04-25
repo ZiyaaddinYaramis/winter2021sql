@@ -1,5 +1,5 @@
 /* ========================================================= 
-                        TABLO OLU?TURMA  (CRUD - Create)                  
+                        TABLO OLUSTURMA  (CRUD - Create)                  
 ============================================================*/
 
 
@@ -18,12 +18,12 @@ CREATE TABLE student -- yeni bir tablo
 );
 
 /*  
-CREATE TABLE tabloAd?
+CREATE TABLE tabloAdi
 (
-de?i?kenAd? de?i?kenTipi,
-de?i?kenAd? de?i?kenTipi,
+degiskenAdi degiskenTipi,
+degiskenAdi degiskenTipi,
 …………
-de?i?kenAd? de?i?kenTipi
+degiskenAdi degiskenTipi
 );
 */
 
@@ -38,9 +38,9 @@ Tekrar Toggle Line Comments e click'liyerek eski haline cevirebilirsiniz
 
 
 /* ========================================================= 
-                     VER? G?R??? 
+                     VERI GIRISI 
 ===========================================================*/
--- INSERT INTO tablo_ad? VALUES (de?i?ken1, de?i?ken2, … )
+-- INSERT INTO tablo_adi VALUES (degisken1, degisken2, … )
 
 INSERT INTO student VALUES ('101','Ahmet Can',30);
 INSERT INTO student VALUES ('102','MEHMET ALI',25);
@@ -52,20 +52,20 @@ INSERT INTO student VALUES ('105','MARY BROWN',17);
 
 
 /* ========================================================= 
-                    PARÇALI VER? G?R??? 
+                    PARÇALI VERI GIRISI 
 ===========================================================*/
 
 /*
-ÖRNEK: Parçal? Giri?
+ÖRNEK: Parçali Giris
 INSERT INTO student(std_id,std_name) VALUES('1005','MUSTAFA KARAR');
-NOT: Veri giri?i yap?lmayan de?i?kenlere NULL atan?r.
+NOT: Veri girisi yapslmayan degiskenlere NULL atanir.
 */
 
 INSERT INTO student (std_id,std_name) VALUES ('106','Jonh Travolta');
 
 
 /* ========================================================= 
-                    TABLODAN VER? SORGULAMA  (CRUD - Read)  
+                    TABLODAN VERI SORGULAMA  (CRUD - Read)  
 ===========================================================*/
 
 
@@ -80,14 +80,14 @@ DROP TABLE student; -- student isimli table'i siler
                          CRUD ÖRNEK  
  ===========================================================
              
- Veritaban?m?zda urunler ad?nda bir Tablo olu?tural?m.
+ Veritabanimizda urunler adinda bir tablo olusturalim.
  urun_id  => NUMBER
  urun_ad? => VARCHAR2(50)
  fiyat => NUMBER(5,2)
  tett => DATE,      
  stok_adedi => NUMBER(10)  
- Tabloya, Ürün giri?i yapal?m.Örne?in C?PS, KOLA, AYRAN, B?SKÜV?,  
- (100, ‘C?PS’, 5.50, ‘01-05-2022’, 500)
+ Tabloya, Ürün girisi yapalim. Örnegin CIPS, KOLA, AYRAN, BISKÜVI,  
+ (100, ‘CIPS’, 5.50, ‘01-05-2022’, 500)
  Verilerimizi çekelim.
  ===========================================================*/
 
@@ -100,8 +100,8 @@ CREATE TABLE urunler (
     stok_adedi  NUMBER(10)
 );
 
-INSERT INTO urunler VALUES (101,'C?PS',5.25,'01-05-2022',1500);
-INSERT INTO urunler VALUES (102,'B?SKÜV?',2.50,'01-07-2024',300);
+INSERT INTO urunler VALUES (101,'CIPS',5.25,'01-05-2022',1500);
+INSERT INTO urunler VALUES (102,'BISKÜVI',2.50,'01-07-2024',300);
 INSERT INTO urunler VALUES (103,'GOFRET',1.50,'05-09-2023',120);
 INSERT INTO urunler VALUES (104,'KOLA',4.50,'21-09-2025',50);
 INSERT INTO urunler VALUES (105,'AYRAN',2.50,'01-05-2021',5);

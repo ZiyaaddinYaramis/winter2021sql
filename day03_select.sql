@@ -243,11 +243,11 @@ CREATE TABLE personel
     
     
 /* ======================= SELECT - REGEXP_LIKE ================================
-    Daha karma??k pattern ile sorgulama i?lemi için REGEXP_LIKE kullan?labilir.  
+    Daha karmasik pattern ile sorgulama islemi için REGEXP_LIKE kullanilabilir.  
 
     Syntax:
     --------
-    REGEXP_LIKE(sutun_ad?, ‘pattern[] ‘, ‘c’ ] ) 
+    REGEXP_LIKE(sutun_adi, ‘pattern[] ‘, ‘c’ ] ) 
             
 /* ========================================================================== */
     
@@ -276,7 +276,7 @@ CREATE TABLE personel
     SELECT * FROM kelimeler;
     
 /* -----------------------------------------------------------------------------
-  ORNEK21: ?çerisinde 'hi' bulunan kelimeleri listeleyeniz
+  ORNEK21: Içerisinde 'hi' bulunan kelimeleri listeleyeniz
  -----------------------------------------------------------------------------*/ 
     
     SELECT * FROM kelimeler
@@ -287,16 +287,16 @@ CREATE TABLE personel
     WHERE REGEXP_LIKE (kelime, '[hi]');
     
 /* -----------------------------------------------------------------------------
-  ORNEK22: ?çerisinde 'ot' veya 'at' bulunan kelimeleri listeleyeniz
+  ORNEK22: Içerisinde 'ot' veya 'at' bulunan kelimeleri listeleyeniz
  -----------------------------------------------------------------------------*/ 
-    -- VEYA i?lemi için | karakteri kullan?l?r.
+    -- VEYA islemi için | karakteri kullanilir.
     
     SELECT * FROM kelimeler
     WHERE REGEXP_LIKE (kelime, 'ot|at');
     
     
 /* -----------------------------------------------------------------------------
-  ORNEK23: ?çerisinde 'ot' veya 'at' bulunan kelimeleri büyük-küçük harfe dikkat
+  ORNEK23: Içerisinde 'ot' veya 'at' bulunan kelimeleri büyük-küçük harfe dikkat
   etmeksizin listeleyeniz
  -----------------------------------------------------------------------------*/ 
      -- 'c' => case-sentisitive demektir ve default case-sensitive aktiftir.
@@ -307,30 +307,30 @@ CREATE TABLE personel
     
     
 /* -----------------------------------------------------------------------------
-  ORNEK24: 'ho' veya 'hi' ile ba?layan kelimeleri büyük-küçük harfe dikkat
+  ORNEK24: 'ho' veya 'hi' ile baslayan kelimeleri büyük-küçük harfe dikkat
   etmeksizin listeleyeniz
  -----------------------------------------------------------------------------*/   
-    -- Ba?lang?c? göstermek için ^ karakteri kullan?l?r.
+    -- Baslangici göstermek için ^ karakteri kullanilir.
     SELECT * FROM  kelimeler
-    WHERE REGEXP_LIKE(kelime, '^hi|^ho','i'); -- 'i' Büyük-Küçük harf duyars?z
+    WHERE REGEXP_LIKE(kelime, '^hi|^ho','i'); -- 'i' Büyük-Küçük harf duyarsiz
     
     
 /* -----------------------------------------------------------------------------
   ORNEK25: Sonu 't' veya 'm' ile bitenleri büyük-küçük harfe dikkat
   etmeksizin listeleyeniz
  -----------------------------------------------------------------------------*/   
-     -- Biti?i göstermek için $ karakteri kullan?l?r.
+     -- Bitisi göstermek için $ karakteri kullanilir.
     
     SELECT * FROM kelimeler
     WHERE REGEXP_LIKE (kelime,'t$|m$','i');
     
     
 /* -----------------------------------------------------------------------------
-  ORNEK26: h ile ba?lay?p t ile biten 3 harfli kelimeleri büyük-küçük harfe 
+  ORNEK26: h ile baslayip t ile biten 3 harfli kelimeleri büyük-küçük harfe 
   dikkat etmeksizin listeleyeniz
  -----------------------------------------------------------------------------*/ 
-    -- - (tire) karakteri bir aral?k verir.
-    -- kö?eli parantez tek bir karakter gösterir.
+    -- - (tire) karakteri bir aralik verir.
+    -- köseli parantez tek bir karakter gösterir.
     
     /*
     SELECT * FROM kelimeler
@@ -341,40 +341,46 @@ CREATE TABLE personel
     WHERE REGEXP_LIKE(kelime, 'h[a-zA-Z0-9]t');
     
 /* -----------------------------------------------------------------------------
-  ORNEK27: ?lk harfi h, son harfi t olup 2.harfi a veya i olan 3 harfli 
-  kelimelerin tüm bilgilerini sorgulayal?m.
+  ORNEK27: Ilk harfi h, son harfi t olup 2.harfi a veya i olan 3 harfli 
+  kelimelerin tüm bilgilerini sorgulayalim.
  -----------------------------------------------------------------------------*/ 
     /*
     SELECT * FROM kelimeler
     WHERE REGEXP_LIKE (kelime,'h[ai]t','i');
     */
+    
     SELECT * FROM kelimeler
     WHERE REGEXP_LIKE (kelime, 'h[ai]t');
     
-/* -----------------------------------------------------------------------------
-  ORNEK29: a veya s ile ba?layan kelimelerin tüm bilgilerini listeleyiniz.
------------------------------------------------------------------------------*/ 
     /*
     SELECT * FROM kelimeler
-    WHERE REGEXP_LIKE(kelime,'h[mie](*)');
+    WHERE REGEXP_LIKE (kelime, '^h[ai]t$');
     */
+    
+/* -----------------------------------------------------------------------------
+  ORNEK29: a veya s ile baslayan kelimelerin tüm bilgilerini listeleyiniz.
+-----------------------------------------------------------------------------*/ 
+   /*
+    SELECT * FROM kelimeler
+    WHERE REGEXP_LIKE(kelime,'h[mie](*)');
+   */
     
     SELECT * FROM kelimeler
     WHERE REGEXP_LIKE (kelime, '^[as]');
     
 /* -----------------------------------------------------------------------------
-  ORNEK30: içerisinde en az 2 adet oo bar?d?ran kelimelerin tüm bilgilerini 
+  ORNEK30: içerisinde en az 2 adet oo baridiran kelimelerin tüm bilgilerini 
   listeleyiniz.
 -----------------------------------------------------------------------------*/ 
     
     -- {2}
-    /*
+    
     SELECT * FROM kelimeler
     WHERE REGEXP_LIKE(kelime,'[o]{2}','i'); 
     
     SELECT * FROM kelimeler
     WHERE REGEXP_LIKE(kelime,'[a]{2}','i'); 
-    */
+   
     
     SELECT *  FROM kelimeler
     WHERE REGEXP_LIKE (kelime, '[o]{2}');

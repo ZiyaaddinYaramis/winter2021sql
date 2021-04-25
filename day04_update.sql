@@ -1,7 +1,7 @@
 /* ============================== UPDATE SET ===================================    
     
     ilk olarak asagidaki gibi tedarikciler adinda bir tablo olusturunun ve 
-    vergi_no sutununu primary key yap?n?z.Ayr?ca asag?daki verileri tabloya giriniz.
+    vergi_no sutununu primary key yapiniz.Ayrica asagidaki verileri tabloya giriniz.
     
     vergi_no NUMBER(3),
     firma_ismi VARCHAR2(50),
@@ -12,9 +12,9 @@
     INSERT INTO tedarikciler VALUES (103, 'Erikson', 'Maki Tammamen');
     INSERT INTO tedarikciler VALUES (104, 'Apple', 'Adam Eve');
         
-    Sonras?nda a?a??daki gibi urunler ad?nda bir ba?ka tablo olu?turunuz ve bu
-    tablonun ted_vergino sutunu ile tedarikciler tablosunun vergi_no sutular?
-    yard?m?yla ili?ki kurunuz. Verileri giriniz.
+    Sonrasinda asagidaki gibi urunler adinda bir baska tablo olusturunuz ve bu
+    tablonun ted_vergino sutunu ile tedarikciler tablosunun vergi_no sutunlari
+    yardmiyla iliski kurunuz. Verileri giriniz.
     
     
     ted_vergino NUMBER(3), 
@@ -115,31 +115,42 @@ CREATE TABLE urunler
     SELECT * FROM urunler;
     
 /* -----------------------------------------------------------------------------
-  ORNEK4: firma_ismi Samsung olan tedarikcinin irtibat_ismini 'Ay?e Y?lmaz' 
+  ORNEK4: firma_ismi Samsung olan tedarikcinin irtibat_ismini 'Ayse Yilmaz' 
   olarak güncelleyiniz.
  -----------------------------------------------------------------------------*/ 
     UPDATE tedarikciler
     SET irtibat_ismi = 'Ayse Yilmaz'
     WHERE firma_ismi = 'Samsung';
     
+    
+    
+    SELECT * FROM tedarikciler;
 /* -----------------------------------------------------------------------------
-  ORNEK5: urunler tablosundaki 'Phone' de?erlerini Telefon olarak güncelleyiniz.
+  ORNEK5: urunler tablosundaki 'Phone' degerlerini Telefon olarak güncelleyiniz.
  -----------------------------------------------------------------------------*/
     UPDATE urunler
     SET urun_isim='Telefon'
     WHERE urun_isim='Phone';
+    
+    
+    
+    SELECT * FROM urunler;
  
 /* -----------------------------------------------------------------------------
-  ORNEK6: urunler tablosundaki urun_id de?eri 1004'ten büyük olanlar?n urun_id
-  de?erlerini bir artt?r?n?z
+  ORNEK6: urunler tablosundaki urun_id degeri 1004'ten büyük olanlarin urun_id
+  degerlerini bir arttiriniz
  -----------------------------------------------------------------------------*/ 
+     
      UPDATE urunler
      SET urun_id = urun_id + 1
      WHERE urun_id > 1004 ;
+     
+     
+     SELECT * FROM urunler;
   
  /* ----------------------------------------------------------------------------
-  ORNEK7: urunler tablosundaki tüm ürünlerin urun_id de?erini ted_vergino 
-  sutun de?erleri ile toplayarak güncelleyiniz.
+  ORNEK7: urunler tablosundaki tüm ürünlerin urun_id degerini ted_vergino 
+  sutun degerleri ile toplayarak güncelleyiniz.
  -----------------------------------------------------------------------------*/  
     UPDATE urunler
     SET urun_id = urun_id + ted_vergino;
@@ -149,7 +160,7 @@ CREATE TABLE urunler
     
 /*-----------------------------------------------------------------------------
  ORNEK8: urunler tablosundan Ali Bak’in aldigi urunun ismini, tedarikci 
- tablosunda irtibat_ismi 'Adam Eve' olan firman?n ismi (firma_ismi) ile 
+ tablosunda irtibat_ismi 'Adam Eve' olan firmanin ismi (firma_ismi) ile 
  degistiriniz.
  -----------------------------------------------------------------------------*/
     UPDATE urunler
