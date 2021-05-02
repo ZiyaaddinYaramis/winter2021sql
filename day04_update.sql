@@ -70,12 +70,15 @@ CREATE TABLE urunler
     SELECT * FROM tedarikciler;
     SELECT * FROM urunler;
     
+    DROP TABLE tedarikciler;
+    DROP TABLE urunler;
+    
     
     -- SYNTAX
-    ---------
-    -- UPDATE tablo_adi
-    -- SET sutun_adi = yeni_deger
-    -- WHERE sutun_adi;
+    ----------
+    -- UPDATE tablo_ad?
+    -- SET sutun1 = yeni_deger1, sutun2 = yeni_deger2,...  
+    -- WHERE ko?ul;
     
     
 /*-----------------------------------------------------------------------------
@@ -98,7 +101,7 @@ CREATE TABLE urunler
     SET firma_ismi = 'SAMSUNG';
     
     
-    DELETE FROM urunler; -- Drop table tabloyu siler ama DELETE icerigini siler.
+    DELETE FROM urunler; -- DROP TABLE tabloyu siler ama DELETE icerigini siler.
                          -- Not!!! önce child'in icerigini silmelisin
     DELETE FROM tedarikciler;
     
@@ -162,17 +165,36 @@ CREATE TABLE urunler
  ORNEK8: urunler tablosundan Ali Bak’in aldigi urunun ismini, tedarikci 
  tablosunda irtibat_ismi 'Adam Eve' olan firmanin ismi (firma_ismi) ile 
  degistiriniz.
+ 
+ 
+ (urunler tablosundaki musteri_ismi = 'Ali bak' olan sutundaki  urun_ismi 'ni,
+ tedarikci tablosundaki irtibat_ismi = 'Adam Eve' olan sutundaki firma_ismi ile degistiriniz)
+ 
+ Update ==> urunler tablosundaki
+ Set ==> urun_ismi 'ni = ( Select firma_ismi From tedarikci tablosundaki Where irtibat_ismi = 'Adam Eve' olan sutundaki )
+ Where ==> musteri_ismi = 'Ali bak' olan sutundaki
+ 
+ 
  -----------------------------------------------------------------------------*/
     UPDATE urunler
     SET urun_isim = (SELECT firma_ismi FROM tedarikciler 
                      WHERE irtibat_ismi = 'Adam Eve')
     WHERE musteri_isim = 'Ali Bak';
+    
+     
+    
   
 /*------------------------------------------------------------------------------
  ORNEK9: Laptop satin alan musterilerin ismini, Apple’in irtibat_isim'i ile 
  degistirin
  -----------------------------------------------------------------------------*/
 
+    UPDATE urunler
+    SET musteri_isim = (SELECT irtibat_ismi  FROM tedarikciler WHERE firma_ismi = 'Apple')
+    WHERE urun_isim = 'Laptop'
+    
+    
+    
     UPDATE urunler
     SET musteri_isim = (SELECT irtibat_ismi FROM tedarikciler
                         WHERE firma_ismi ='Apple')
