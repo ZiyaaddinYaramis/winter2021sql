@@ -1,9 +1,9 @@
-/*============================== JOIN ?SLEMLER? ===============================
+/*============================== JOIN ISLEMLERI ===============================
     
-    Set Operatorleri (Union,Intersect,Minus) farkl? tablolardaki sutunlari 
-    birlestirmek kullanilir.
+    Set Operatorleri (Union,Intersect,Minus) ayni veya farkli tablolardaki 
+    sutunlari birlestirmek icin kullanilir.
     
-    Join islemleri ise farkl? Tablolari birlestirmek icin kullanilir. Diger 
+    Join islemleri ise farkli Tablolari birlestirmek icin kullanilir. Diger 
     bir ifade ile farkli tablolardaki secilen sutunlar ile yeni bir tablo 
     olusturmak icin kullanilabilir.
     
@@ -11,7 +11,7 @@
     Foreign Key'ler ile iliskili olan tablolardan istenilen sutunlari cekmek 
     icin JOIN islemleri kullanilabilir.
     
-    ORACLE SQL'de 4 Cesit Join isemi kullanilabilmektedir.
+    ORACLE SQL'de 4 Cesit Join islemi kullanilabilmektedir.
     1) FULL JOIN:  Tablodaki tum sonuclari gosterir
     2) INNER JOIN:  Tablolardaki ortak olan sonuc kumesini gosterir
     3) LEFT JOIN:  Ilk tabloda (Sol) olup digerinde olmayan sonuclari gosterir
@@ -36,15 +36,21 @@
         siparis_tarihi DATE
     );
     
-    INSERT INTO siparisler VALUES(11, 101, '17-Apr-2020');
-    INSERT INTO siparisler VALUES(22, 102, '18-Apr-2020');
-    INSERT INTO siparisler VALUES(33, 103, '19-Apr-2020');
-    INSERT INTO siparisler VALUES(44, 104, '20-Apr-2020');
-    INSERT INTO siparisler VALUES(55, 105, '21-Apr-2020');
+    INSERT INTO siparisler VALUES(11, 101, '17-04-2020');
+    INSERT INTO siparisler VALUES(22, 102, '18-04-2020');
+    INSERT INTO siparisler VALUES(33, 103, '19-04-2020');
+    INSERT INTO siparisler VALUES(44, 104, '20-04-2020');
+    INSERT INTO siparisler VALUES(55, 105, '21-04-2020');
+
+   -- tarih formatina dikkat etmek lazim '21-Apr-2020' yazinca hata verdi cunku uyumlu degil
+
 
     SELECT * FROM siparisler;
     SELECT * FROM sirketler;
     
+    
+    DROP TABLE siparisler;
+    DROP TABLE sirketler;
       
 /*=============================== FULL JOIN  ==================================
     

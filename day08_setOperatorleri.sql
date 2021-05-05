@@ -221,7 +221,7 @@
     
     MINUS
     
-    SELECT isim, maas ,sirket
+    SELECT isim,maas,sirket
     FROM personel
     WHERE sirket = 'Honda';
    
